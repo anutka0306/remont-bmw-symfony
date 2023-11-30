@@ -1,0 +1,11 @@
+<div class="container">
+    <h2>Видео отчеты о ремонте БМВ</h2>
+    <p>Подробно рассказываем о проделанной работе, показываем проблемные места у каждой модели БМВ. Даем рекомендации по выбору запчастей БМВ.</p>
+    {% if(video_gallery is defined and video_gallery is not empty) %}
+        <div class="d-flex flex-wrap">
+        {% for video in video_gallery %}
+            <iframe width="330" height="250" src="{{ video.link }}" frameborder="0" allowfullscreen></iframe>
+        {% endfor %}
+        </div>
+    {% endif %}
+</div>

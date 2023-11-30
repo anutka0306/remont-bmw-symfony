@@ -1,0 +1,23 @@
+<div id="owl2" class="owl-carousel slide-two">
+    {% if(works is defined and works is not empty) %}
+        <div class="d-flex flex-wrap">
+            {% for work in works %}
+                <div style="width: 30%">
+                    {{ work.name }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+   {# [[!PdoResources?
+    &cache=`1`
+    &parents=`62`
+    &includeContent=`1`
+    &limit=`10`
+    &includeTVs=`img1`
+    &tpl=`AllArticlesSide`
+    &sortby=`publishedon`
+    &sortdir=`DESC`
+    &depth=`1`
+    &where=`{ "template:!=":59}`
+    ]]#}
+</div>

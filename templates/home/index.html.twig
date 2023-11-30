@@ -1,0 +1,166 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Main page{% endblock %}
+
+{% block body %}
+    {{ include('elements/blocks/egg16.html.twig') }}
+    <div class="container">
+        <div class="col-md-12" style="padding-top: 30px">
+            <div class="row">
+                <div class="col-xs-12 col-md-12">
+                    <h2 style="margin-top: 0;">Ремонт БМВ в Санкт-Петербурге</h2>
+                    <p class="post1bmw">
+                        Вы давно ищите высококачественный сервис, специализирующийся на автомашинах марки BMW? Тогда наша компания, это то, что вам нужно!
+                    </p>
+                    <p class="hidden-xs hidden-sm">
+                        Мы осуществляем широкий спектр работ по обслуживанию и <b>ремонту машин баварского происхождения БМВ в Санкт – Петербурге.</b>
+                        При входе к нам вас встретит команда высококвалифицированных работников, с многолетним стажем .
+                        <b>Только БМВ</b> - Преимуществом нашего сервиса BMW, то что мы специализируемся на ремонт, диагностике и обслуживания одной марки - BMW.
+                    </p>
+                </div>
+            </div>
+
+            {{ include('elements/home/four-photo.html.twig') }}
+
+            <div style="clear: both;"></div>
+            {{ include('elements/home/gallery.html.twig') }}
+            <div style="clear: both;"></div>
+
+            <div class="linezv hidden-xs hidden-sm">&nbsp;</div>
+        </div>
+    </div>
+
+
+
+    <div class="container-fluid" style="background: #eee; margin-top: 30px;     padding: 30px 0 30px 0;">
+        {{ include('elements/home/video-gallery.html.twig') }}
+    </div>
+
+
+    <div class="container-fluid">
+        <div class="container">
+            <div class="linezv hidden-xs hidden-sm">&nbsp;</div>
+
+            <h2 class="imp">{{ page.name }}</h2>
+            <p>Наша команда подробно показывает отчеты о ремонте автомобилей BMW [[*model18]] [[*kuzov18]]:</p>
+            {{ include('elements/blocks/works-slider.html.twig') }}
+        </div>
+    </div>
+    <div class="linezv hidden-xs hidden-sm">&nbsp;</div>
+    <div class="container-fluid sss">
+        {# Models-submodels section #}
+        {{ include('elements/blocks/models-section.html.twig') }}
+
+        <div class="container">
+            {# Content #}
+            {{ page.text | raw }}
+
+            <h2><a href="[[~218]]">Тюнинг БМВ:</a></h2>
+            {# Services block #}
+
+            {#[[-!pdoResources?
+            &parents=`394`
+            &depth=`0`
+            &tpl=`catalogtunmod.tpl`
+            &includeTVs=`img1`
+            &showHidden=`0`
+            &limit=`20`
+            &sortdir=`ASC`
+            ]]#}
+        </div>
+    </div>
+    {{ include('elements/blocks/services-section.html.twig') }}
+    <section class="contacts" id="contacts">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>Контакты</h2>
+                </div>
+            </div>
+            <div class="row topcont">
+                <div class="col-md-6">
+                    <img src="/img/cont1.jpg" alt="">
+                </div>
+                <div class="col-md-6">
+                    <h3 class="contacts-subhead">
+                        Адрес:
+                    </h3>
+                    <p class="contacts_descr">
+                        Санкт-Петербург, Кушелевская дорога 20
+                    </p>
+                    <h3 class="contacts-subhead">
+                        Телефон:
+                    </h3>
+                    <p class="contacts_descr">
+                        8 (812) 936 33-79
+                    </p>
+                    <h3 class="contacts-subhead">
+                        График:
+                    </h3>
+                    <p class="contacts_descr">
+                        Мы работаем с понедельника по воскресенье <br>
+                        с 09:00 до 21:00
+                    </p>
+                </div>
+            </div>
+            <div class="row topcont">
+
+                <div class="col-md-6">
+                    <h3 class="contacts-subhead">
+                        Адрес:
+                    </h3>
+                    <p class="contacts_descr">
+                        Санкт-Петербург, ул. Боровая 116
+                    </p>
+                    <h3 class="contacts-subhead">
+                        Телефон:
+                    </h3>
+                    <p class="contacts_descr">
+                        +7 (812) [[++phone_main]]
+                    </p>
+                    <h3 class="contacts-subhead">
+                        График:
+                    </h3>
+                    <p class="contacts_descr">
+                        Мы работаем с понедельника по воскресенье <br>
+                        с 09:00 до 21:00
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <img src="/img/cont_2.jpg" alt="">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="/img/cont3.jpg" alt="">
+                </div>
+                <div class="col-md-6">
+                    <h3 class="contacts-subhead">
+                        Адрес:
+                    </h3>
+                    <p class="contacts_descr">
+                        Санкт-Петербург, дорога на Турухтанные Острова, 12
+                    </p>
+                    <h3 class="contacts-subhead">
+                        Телефон:
+                    </h3>
+                    <p class="contacts_descr">
+                        8 (812) 913-54-86
+                    </p>
+                    <h3 class="contacts-subhead">
+                        График:
+                    </h3>
+                    <p class="contacts_descr">
+                        Мы работаем с понедельника по воскресенье <br>
+                        с 09:00 до 21:00
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{ include('elements/footer/footer-contact-panel.html.twig') }}
+
+    {{ include('elements/footer/mapfast.html.twig') }}
+    {{ include('elements/footer/footer.html.twig') }}
+    {#{{ dump(page) }}#}
+{% endblock %}

@@ -1,0 +1,30 @@
+<div class="container-fluid" style="text-align: center;">
+    <div class="container">
+        <h2 style="padding-top: 30px;">Выберите модель BMW</h2>
+        <hr class="style-seven" />
+        <div class="row modr">
+            {% for model in models_array %}
+                {#{{ dump(model) }}#}
+            <div class="col-md-2 col-xs-6 imgmodel pad5">
+                <a title="Ремонт {{ model[0].name }}" href="{{ model.path }}">
+                    <img title="{{ model[0].name }}" src="i/newbmw/16/bmw-1.jpg" alt="{{ model[0].name }}" /></a>
+                <h2 class="no-margin"><a title="Ремонт {{ model[0].name }}" href="{{ model.path }}">
+                        {{ model[0].name }}
+                    </a></h2>
+                <ul class="hidden-xs hidden-sm" style="text-align: center;">
+                    {% for sub in model.children %}
+                        {#{{ dump(sub) }}#}
+                        {% if sub.path is null %}
+                        <li class="lobord"><a title="Ремонт БМВ {{ sub[0].name }}" href="{{ model.path }}">{{ sub[0].name }}</a></li>
+                        {% else %}
+                    <li class="lobord"><a title="Ремонт БМВ {{ sub[0].name }}" href="{{ sub.path }}">{{ sub[0].name }}</a></li>
+                        {% endif %}
+                    {%  endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <hr class="style-seven1" /></div>
+</div>

@@ -1,0 +1,70 @@
+<div class="container">
+    <h2>Выберите вид обслуживания BMW</h2>
+</div>
+</div></div>
+<div class="container-fluid" style="background-color: #eee; border-top: 1px solid #ccc;">
+    <div class="container uslugiservice" style="text-align: center; margin-top: 20px;">
+        {#<div class="row">
+            <div class="col-md-2 col-xs-6 pad5"><a class="thumbnail" href="[[~6]]"><img src="i/newbmw/16/icon/3a.jpg" alt="Замена масла БМВ" />
+                    <p>Замена масла</p></a>
+            </div>
+            <div class="col-md-2 col-xs-6 pad5"><a class="thumbnail" href="[[~5]]"><img src="i/newbmw/16/icon/4a.jpg" alt="Диагностика БМВ" />
+                    <p>Диагностика БМВ</p></a>
+            </div>
+            <div class="col-md-2 col-xs-6 pad5"><a class="thumbnail" href="[[~4750]]"><img src="i/newbmw/16/icon/5a.jpg" alt="Техническое обслуживание БМВ" />
+                    <p class="hidden-xs">Тех обслуживание</p><p class="visible-xs">ТО-1, 2...</p></a>
+            </div>
+            <div class="col-md-2 col-xs-6 pad5"><a class="thumbnail" href="[[~7]]"><img src="i/newbmw/16/icon/6a.jpg" alt="Замена тормозных колодок БМВ" />
+                    <p>Замена колодок</p></a>
+            </div>
+            <div class="col-md-2 col-xs-6 pad5"><a class="thumbnail" href="[[~8]]"><img src="i/newbmw/16/icon/7a.jpg" alt="Замена ГРМ БМВ" />
+                    <p>Замена ГРМ</p></a>
+            </div>
+            <div class="col-md-2 col-xs-6 pad5"><a class="thumbnail" href="[[~3]]"><img src="i/newbmw/16/icon/8a.jpg" alt="Ремонт двигателя БМВ" />
+                    <p>Ремонт двигателя</p></a>
+            </div>
+        </div>#}
+
+        {#<div class="row">
+            <div class="col-md-2 col-xs-6 pad5"><a class="thumbnail" href="[[~356]]"><img src="i/newbmw/16/icon/2a.jpg" alt="Развал схождение БМВ" />
+                    <p>Развал схождение</p></a>
+            </div>
+            <div class="col-md-2 col-xs-6 pad5"><a class="thumbnail" href="[[~580]]"><img src="i/newbmw/16/icon/12a.jpg" alt="Шиномонтаж БМВ" />
+                    <p>Шиномонтаж колес</p></a>
+            </div>
+            <div class="col-md-2 col-xs-6 pad5"><a class="thumbnail" href="[[~581]]"><img src="i/newbmw/16/icon/9a.jpg" alt="Заправка кондиционера БМВ" />
+                    <p>Заправка кондея</p></a>
+            </div>
+            <div class="col-md-2 col-xs-6 pad5"><a class="thumbnail" href="[[~4]]"><img src="i/newbmw/16/icon/11a.jpg" alt="Ремонт подвески БМВ" />
+                    <p>Ремонт подвески</p></a>
+            </div>
+            <div class="col-md-2 col-xs-6 pad5"><a class="thumbnail" href="[[~53]]"><img src="i/newbmw/16/icon/10a.jpg" alt="Замена свечей БМВ" />
+                    <p>Замена свечей</p></a>
+            </div>
+
+            <div class="col-md-2 col-xs-6 pad5"><a class="thumbnail" href="[[~2]]"><img src="!PIK/img/uslugi/13a.jpg" alt="Ремонт АКПП БМВ" />
+                    <p>Ремонт АКПП</p></a>
+            </div>
+        </div>#}
+
+        <div class="row">
+            {% for service in services %}
+                <div class="col-md-2 col-xs-6 pad5">
+                    <a class="thumbnail" href="{{ service.path }}">
+                        {#<img src="i/newbmw/16/icon/3a.jpg" alt="{{ service.name }}" />#}
+                        <p>{{ service.name }}</p>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+        {#[[!pdoResources?
+        &parents=`59`
+        &resources=`-2,-3,-4,-5,-6,-53,-580,-581,-7,-278,-4750`
+        &depth=`0`
+        &limit=`18`
+        &tpl=`ap_link3`
+        &sortdir=`ASC`
+        ]]#}
+    </div>
+</div>

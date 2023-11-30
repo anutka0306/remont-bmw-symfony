@@ -1,0 +1,9 @@
+<h2>Кратко о ремонте BMW [[*model18]] [[*kuzov18]] в Автоцентре ПИК</h2>
+<p>Команда БМВ с многолетним стажем обслуживания, ремонта и тюнинга автомобилей BMW [[*model18]] [[*kuzov18]]. Более 10 000 оригинальных и высококачественных аналогов запчастей BMW [[*model18]] [[*kuzov18]] в наличии на складе.</p>
+{% if(gallery is defined and gallery is not empty) %}
+ <div class="d-flex flex-wrap">
+     {% for image in gallery %}
+     <img src="{{ asset(image) }}" alt="" width="360">
+     {% endfor %}
+ </div>
+{% endif %}
