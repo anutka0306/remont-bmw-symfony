@@ -1,5 +1,6 @@
 <ul class="list-inline list-group list-group-horizontal">
-    {% for menuItem in modelsMemu %}
-        <li class="me-3"> {{ menuItem.menuName ?? menuItem.name }}</li>
+        {#{{ dump(modelsMenu) }}#}
+    {% for menuItem in modelsMenu %}
+            <li class="me-3"><a href="/{{ menuItem.path }}">{{ menuItem[0].menuName ?? menuItem[0].name }}</a></li>
     {% endfor %}
 </ul>

@@ -48,7 +48,8 @@ class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
-            'models_menu' => $modelRepository->findBy(['status' => 1, 'show_in_menu' => 1], ['menu_order' => 'ASC']),
+            /*'models_menu' => $modelRepository->findBy(['status' => 1, 'show_in_menu' => 1], ['menu_order' => 'ASC']),*/
+            'models_menu' => $modelRepository->findAllWithPathForMenu(),
             'page' => $contentRepository->findPageByPath('index'),
             'gallery' => $gallery,
             'video_gallery' => $videos,

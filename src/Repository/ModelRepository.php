@@ -56,4 +56,16 @@ class ModelRepository extends ServiceEntityRepository
         );
         return $query->getResult();
     }
+
+    public function findAllWithPathForMenu() {
+        $em = $this->getEntityManager();
+        $query = $em->createQuery(
+            'SELECT m, c.path 
+            FROM App\Entity\Model m 
+            JOIN App\Entity\Content c
+            WHERE m.id = c.model AND m.show_in_menu = 1 
+            ORDER BY m.menu_order ASC'
+        );
+        return $query->getResult();
+    }
 }
