@@ -50,6 +50,8 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
             /*'models_menu' => $modelRepository->findBy(['status' => 1, 'show_in_menu' => 1], ['menu_order' => 'ASC']),*/
             'models_menu' => $modelRepository->findAllWithPathForMenu(),
+            'header_nav' => $contentRepository->getHeaderMenu(),
+            'footer_nav' => $contentRepository->getFooterMenu(),
             'page' => $contentRepository->findPageByPath('index'),
             'gallery' => $gallery,
             'video_gallery' => $videos,

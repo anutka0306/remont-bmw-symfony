@@ -62,6 +62,15 @@ class Content
     #[ORM\ManyToOne(inversedBy: 'contents')]
     private ?Service $service = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $in_header_nav = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $in_footer_nav = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $menu_name = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -255,6 +264,42 @@ class Content
     public function setService(?Service $service): static
     {
         $this->service = $service;
+
+        return $this;
+    }
+
+    public function isInHeaderNav(): ?bool
+    {
+        return $this->in_header_nav;
+    }
+
+    public function setInHeaderNav(?bool $in_header_nav): static
+    {
+        $this->in_header_nav = $in_header_nav;
+
+        return $this;
+    }
+
+    public function isInFooterNav(): ?bool
+    {
+        return $this->in_footer_nav;
+    }
+
+    public function setInFooterNav(?bool $in_footer_nav): static
+    {
+        $this->in_footer_nav = $in_footer_nav;
+
+        return $this;
+    }
+
+    public function getMenuName(): ?string
+    {
+        return $this->menu_name;
+    }
+
+    public function setMenuName(?string $menu_name): static
+    {
+        $this->menu_name = $menu_name;
 
         return $this;
     }

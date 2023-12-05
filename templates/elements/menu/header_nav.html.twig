@@ -1,0 +1,7 @@
+{% if header_nav is defined and header_nav is not empty %}
+    <ul>
+        {% for nav_item in header_nav %}
+            <li><a href="/{{ nav_item.path }}">{{ nav_item.menuName ?? nav_item.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}
