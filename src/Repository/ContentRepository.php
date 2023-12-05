@@ -52,6 +52,22 @@ class ContentRepository extends ServiceEntityRepository
         return $this->findOneBy(['path' => $path, 'published' => true]);
     }
 
+    public function getHeaderMenu() {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.in_header_nav = 1')
+            ->andWhere('c.published = 1')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getFooterMenu() {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.in_footer_nav = 1')
+            ->andWhere('c.published = 1')
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Content[] Returns an array of Content objects
 //     */

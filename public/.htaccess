@@ -4,6 +4,11 @@
 # start page (path "/") because otherwise Apache will apply the rewriting rules
 # to each configured DirectoryIndex file (e.g. index.php, index.html, index.pl).
 DirectoryIndex index.php
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} .
+RewriteCond %{HTTP_HOST} ^www.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
 # By default, Apache does not evaluate symbolic links if you did not enable this
 # feature in your server configuration. Uncomment the following line if you
@@ -17,11 +22,8 @@ DirectoryIndex index.php
     Options -MultiViews
 </IfModule>
 
-<IfModule mod_rewrite.c>
-    # This Option needs to be enabled for RewriteRule, otherwise it will show an error like
-    # 'Options FollowSymLinks or SymLinksIfOwnerMatch is off which implies that RewriteRule directive is forbidden'
-    Options +FollowSymlinks
 
+<IfModule mod_rewrite.c>
     RewriteEngine On
 
     # Determine the RewriteBase automatically and set it as environment variable.
@@ -57,6 +59,7 @@ DirectoryIndex index.php
     # Rewrite all other queries to the front controller.
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ %{ENV:BASE}/index.php [L]
+
 </IfModule>
 
 <IfModule !mod_rewrite.c>
