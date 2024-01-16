@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ page.metaTitle }}{% endblock %}
+
+{% block body %}
+    <div> Breadcrumbs here </div>
+
+    {# Title and page description #}
+    <div>
+        <h1>{{ page.h1 }}</h1>
+        <p>{{ page.metaDescription }}</p>
+    </div>
+
+    {{ dump(page) }}
+{% endblock %}
