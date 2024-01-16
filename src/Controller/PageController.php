@@ -24,6 +24,17 @@ class PageController extends AbstractController
         ContentRepository $contentRepository
     ): Response
     {
+        $page = $contentRepository->findPageByPath(trim($token, '/'));
+        if($page->getPageType() == 'model') {
+            return $this->render('model/index.html.twig', [
+                'controller_name' => 'PageController',
+                'models_menu' => $modelRepository->findAllWithPathForMenu(),
+                'page' => $contentRepository->findPageByPath(trim($token, '/')),
+                'header_nav' => $contentRepository->getHeaderMenu(),
+                'footer_nav' => $contentRepository->getFooterMenu(),
+            ]);
+        }
+
         return $this->render('page/index.html.twig', [
             'controller_name' => 'PageController',
             'models_menu' => $modelRepository->findAllWithPathForMenu(),
