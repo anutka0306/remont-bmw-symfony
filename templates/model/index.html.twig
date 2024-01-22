@@ -4,7 +4,8 @@
 
 {% block header %}
     {{ include('elements/menu/header_nav.html.twig') }}
-    {{ include('elements/menu/main_nav.html.twig', { 'modelsMenu': models_menu }) }}
+    {{ include('elements/header/header_top.html.twig') }}
+    {{ include('elements/header/header_video.html.twig') }}
 {% endblock %}
 
 {% block body %}

@@ -1,7 +1,19 @@
-{% if header_nav is defined and header_nav is not empty %}
-    <ul>
-        {% for nav_item in header_nav %}
-            <li><a href="/{{ nav_item.path }}">{{ nav_item.menuName ?? nav_item.name }}</a></li>
-        {% endfor %}
-    </ul>
-{% endif %}
+<div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
+    <div class="top-navigation">
+        <div class="container">
+            <section class="navbar-navigation">
+                <nav class="btn-namburger d-block d-md-none">
+                    <a href="#"><i class="fa-solid fa-bars"></i></a>
+                </nav>
+                {% if header_nav is defined and header_nav is not empty %}
+                <div class="nav-menu d-none d-md-block">
+                    {% for nav_item in header_nav %}
+                        <a href="/{{ nav_item.path }}">{{ nav_item.menuName ?? nav_item.name }}</a>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                {{ include('elements/menu/main_nav.html.twig', { 'modelsMenu': models_menu }) }}
+            </section>
+        </div>
+    </div>
+</div>
