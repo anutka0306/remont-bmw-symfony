@@ -2,6 +2,11 @@
 
 {% block title %}Main page{% endblock %}
 
+{% block header %}
+    {{ include('elements/menu/header_nav.html.twig') }}
+    {{ include('elements/menu/main_nav.html.twig', { 'modelsMenu': models_menu }) }}
+{% endblock %}
+
 {% block body %}
     {{ include('elements/blocks/egg16.html.twig') }}
     <div class="container">

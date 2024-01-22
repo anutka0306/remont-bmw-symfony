@@ -2,6 +2,11 @@
 
 {% block title %}{{ page.metaTitle }}{% endblock %}
 
+{% block header %}
+    {{ include('elements/menu/header_nav.html.twig') }}
+    {{ include('elements/menu/main_nav.html.twig', { 'modelsMenu': models_menu }) }}
+{% endblock %}
+
 {% block body %}
     <div> Breadcrumbs here </div>
 
@@ -11,5 +16,20 @@
         <p>{{ page.metaDescription }}</p>
     </div>
 
+    <div>
+        <h3>Выберите кузов вашего {{ page.model.name }}</h3>
+        <div>
+            <ul>
+                {% for submodel in submodels %}
+                <li>
+                    <a href="/{{ submodel.path }}">{{ submodel.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
     {{ dump(page) }}
+
+    {{ dump(submodels) }}
 {% endblock %}

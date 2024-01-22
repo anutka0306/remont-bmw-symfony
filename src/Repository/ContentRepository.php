@@ -68,6 +68,10 @@ class ContentRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function getSubmodelsByModelId($id) {
+        return $this->findBy(['parent_id' => $id, 'page_type' => 'submodel']);
+    }
+
 //    /**
 //     * @return Content[] Returns an array of Content objects
 //     */

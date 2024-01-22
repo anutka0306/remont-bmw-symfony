@@ -26,12 +26,14 @@ class PageController extends AbstractController
     {
         $page = $contentRepository->findPageByPath(trim($token, '/'));
         if($page->getPageType() == 'model') {
+            $submodels = $contentRepository->getSubmodelsByModelId($page->getId());
             return $this->render('model/index.html.twig', [
                 'controller_name' => 'PageController',
                 'models_menu' => $modelRepository->findAllWithPathForMenu(),
                 'page' => $contentRepository->findPageByPath(trim($token, '/')),
                 'header_nav' => $contentRepository->getHeaderMenu(),
                 'footer_nav' => $contentRepository->getFooterMenu(),
+                'submodels' => $submodels,
             ]);
         }
 
