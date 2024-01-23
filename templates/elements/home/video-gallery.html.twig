@@ -1,11 +1,26 @@
-<div class="container">
-    <h2>Видео отчеты о ремонте БМВ</h2>
-    <p>Подробно рассказываем о проделанной работе, показываем проблемные места у каждой модели БМВ. Даем рекомендации по выбору запчастей БМВ.</p>
-    {% if(video_gallery is defined and video_gallery is not empty) %}
-        <div class="d-flex flex-wrap">
-        {% for video in video_gallery %}
-            <iframe width="330" height="250" src="{{ video.link }}" frameborder="0" allowfullscreen></iframe>
-        {% endfor %}
+<div class="video-review-group">
+    <div class="container">
+        <div class="title-white center">Видео отчеты о ремонте БМВ</div>
+        <p class="description-white">Подробно рассказываем о проделанной работе, показываем проблемные места у каждой модели БМВ. Даем рекомендации по выбору запчастей БМВ.</p>
+
+        <div class="video-review__slider">
+            <div class="swiper slider-video-review">
+                <div class="swiper-wrapper">
+                    {% for video in video_gallery %}
+                        <div class="swiper-slide">
+                        <div class="video-item">
+                            <iframe width="560" height="315" src="{{ video.link }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+                <div class="swiper-video-review-pagination"></div>
+                <div class="swiper-scrollbar"></div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
-    {% endif %}
+        <button class="btn-secondary btn-more">ЗАГРУЗИТЬ ЕЩЕ</button>
+    </div>
 </div>

@@ -32,10 +32,11 @@ class HomeController extends AbstractController
         }
 
         /* Video gallery */
-        $videos = $videoGalleryRepository->findBy(['active' => 1], null, 3);
+        $videos = $videoGalleryRepository->findBy(['active' => 1], null, 10);
 
         /* Works */
-        $works  = $contentRepository->findBy(['parent_id' => 62, 'published' => 1], ['created_at' => 'DESC'], 10);
+        $works = $contentRepository->getAllWorks(10);
+        /*$works  = $contentRepository->findBy(['parent_id' => 62, 'published' => 1], ['created_at' => 'DESC'], 10);*/
 
         /* Models - Submodels  */
         $models_array = $modelRepository->findAllWithPath();

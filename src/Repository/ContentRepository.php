@@ -72,6 +72,15 @@ class ContentRepository extends ServiceEntityRepository
         return $this->findBy(['parent_id' => $id, 'page_type' => 'submodel']);
     }
 
+    public function getAllWorks($limit = null) {
+        $works_parents = $this->findBy(['parent_id' => 62, 'published' => 1, 'page_type' => 'works']);
+        $works_parents_ids = array();
+        foreach ($works_parents as $key => $value) {
+            $works_parents_ids[] = $value->getId();
+        }
+        return $this->findBy(['parent_id' => $works_parents_ids, 'published' => 1], ['created_at' => 'DESC'], $limit);
+    }
+
 //    /**
 //     * @return Content[] Returns an array of Content objects
 //     */

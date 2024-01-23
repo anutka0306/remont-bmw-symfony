@@ -9,45 +9,18 @@
 {% endblock %}
 
 {% block body %}
-    {{ include('elements/blocks/egg16.html.twig') }}
-    <div class="container">
-        <div class="col-md-12" style="padding-top: 30px">
-            <div class="row">
-                <div class="col-xs-12 col-md-12">
-                    <h2 style="margin-top: 0;">Ремонт БМВ в Санкт-Петербурге</h2>
-                    <p class="post1bmw">
-                        Вы давно ищите высококачественный сервис, специализирующийся на автомашинах марки BMW? Тогда наша компания, это то, что вам нужно!
-                    </p>
-                    <p class="hidden-xs hidden-sm">
-                        Мы осуществляем широкий спектр работ по обслуживанию и <b>ремонту машин баварского происхождения БМВ в Санкт – Петербурге.</b>
-                        При входе к нам вас встретит команда высококвалифицированных работников, с многолетним стажем .
-                        <b>Только БМВ</b> - Преимуществом нашего сервиса BMW, то что мы специализируемся на ремонт, диагностике и обслуживания одной марки - BMW.
-                    </p>
-                </div>
-            </div>
+    {{ include('elements/home/repair-info.html.twig') }}
+    {{ include('elements/blocks/why-we.html.twig') }}
+    {{ include('elements/blocks/short-about.html.twig') }}
 
-            {{ include('elements/home/four-photo.html.twig') }}
-
-            {{ include('elements/home/gallery.html.twig') }}
-
-        </div>
-    </div>
-
-
-
-    <div class="container-fluid" style="background: #eee; margin-top: 30px; padding: 30px 0 30px 0;">
+    {% if(video_gallery is defined and video_gallery is not empty) %}
         {{ include('elements/home/video-gallery.html.twig') }}
-    </div>
+    {% endif %}
 
+    {% if(works is defined and works is not empty) %}
+        {{ include('elements/blocks/works-slider.html.twig') }}
+    {% endif %}
 
-    <div class="container-fluid">
-        <div class="container">
-
-            <h2 class="imp">{{ page.name }}</h2>
-            <p>Наша команда подробно показывает отчеты о ремонте автомобилей BMW:</p>
-            {{ include('elements/blocks/works-slider.html.twig') }}
-        </div>
-    </div>
     <div class="container-fluid sss">
         {# Models-submodels section #}
         {{ include('elements/blocks/models-section.html.twig') }}
