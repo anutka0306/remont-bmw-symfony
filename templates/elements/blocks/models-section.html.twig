@@ -1,30 +1,57 @@
-<div class="container-fluid" style="text-align: center;">
+<section class="quiz">
     <div class="container">
-        <h2 style="padding-top: 30px;">Выберите модель BMW</h2>
-        <hr class="style-seven" />
-        <div class="row modr">
-            {% for model in models_array %}
-                {#{{ dump(model) }}#}
-            <div class="col-md-2 col-xs-6 imgmodel pad5">
-                <a title="Ремонт {{ model[0].name }}" href="{{ model.path }}">
-                    <img title="{{ model[0].name }}" src="i/newbmw/16/bmw-1.jpg" alt="{{ model[0].name }}" /></a>
-                <h2 class="no-margin"><a title="Ремонт {{ model[0].name }}" href="{{ model.path }}">
-                        {{ model[0].name }}
-                    </a></h2>
-                <ul class="hidden-xs hidden-sm" style="text-align: center;">
-                    {% for sub in model.children %}
-                        {#{{ dump(sub) }}#}
-                        {% if sub.path is null %}
-                        <li class="lobord"><a title="Ремонт БМВ {{ sub[0].name }}" href="{{ model.path }}">{{ sub[0].name }}</a></li>
-                        {% else %}
-                    <li class="lobord"><a title="Ремонт БМВ {{ sub[0].name }}" href="{{ sub.path }}">{{ sub[0].name }}</a></li>
-                        {% endif %}
-                    {%  endfor %}
-                </ul>
+        <div class="quiz_wrapper">
+            <div class="">
+                <form class="quiz_form ajax_form" method="post" id="quiz_form">
+                    <div class="quiz-slide row quiz-slide-1 quiz-slide-active">
+                        <div class="quiz_header">
+                            <div class="quiz_header-title col-md-9">
+                                Выберите модель вашего BMW
+                            </div>
+                        </div>
+                        <div class="quiz_content">
+                            <div class="quiz_content-main col-md-9">
+                                <div class="quiz-slider">
+                                    {% for model in models_array %}
+                                    <div class="caption quiz-thumbnail" data-id="{{ model[0].id }}">
+                                    <img src="images/model.png" alt="BMW" />
+                                    <div class="h3"><span>{{ model[0].name }}</span></div>
+                                    <div class="quiz-model-desc-info">
+                                        {% for sub in model.children %}
+                                            {{ sub[0].name }}<span>|</span>
+                                        {% endfor %}
+
+                                    </div>
+                                </div>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+                        <div class="quiz_content-push col-md-3">
+                            <div class="quiz-select-model-wrapper">
+                                <img class="main-mechanic-master" src="images/director-foto1.png" alt="" width="161">
+                                <div class="main-mechanic">
+                                    <p class="name">Константин Олегович</p>
+                                    <p class="character">Руководитель</p>
+                                </div>
+                                <div class="quiz-bonus">
+                                    <img class="quiz-bonus-wing-1" src="images/pngwing_24.png" alt="" width="29" height="29">
+                                    <div class="quiz-bonus-info">
+                                        Обслуживаться<br>в Автоцентре ПИК выгодно, <br>Вы получаете бонусы и скидки!
+                                    </div>
+                                    <img class="quiz-bonus-wing-2" src="images/pngwing_21.png" alt="" width="52" height="56">
+                                    <img class="quiz-bonus-wing-3" src="images/pngwing_23.png" alt="" width="29" height="30">
+                                </div>
+                                <div class="content-push-footer">
+                                    <button class="btn">ДАЛЕЕ</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
-            {% endfor %}
-
+            <!-- остальные пункты взять с bmwpikspb.ru -->
+            </form>
         </div>
-
-        <hr class="style-seven1" /></div>
-</div>
+    </div>
+    </div>
+</section>

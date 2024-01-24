@@ -71,6 +71,14 @@ class Content
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $menu_name = null;
 
+    #[ORM\OneToOne(mappedBy: 'content_id', cascade: ['persist', 'remove'])]
+    private ?ServiceCategory $serviceCategory = null;
+
+    public function __toString():string
+    {
+        return $this->id .' - ' .$this->name;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -300,6 +308,23 @@ class Content
     public function setMenuName(?string $menu_name): static
     {
         $this->menu_name = $menu_name;
+
+        return $this;
+    }
+
+    public function getServiceCategory(): ?ServiceCategory
+    {
+        return $this->serviceCategory;
+    }
+
+    public function setServiceCategory(ServiceCategory $serviceCategory): static
+    {
+        // set the owning side of the relation if necessary
+        if ($serviceCategory->getContentId() !== $this) {
+            $serviceCategory->setContentId($this);
+        }
+
+        $this->serviceCategory = $serviceCategory;
 
         return $this;
     }

@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Content;
 use App\Entity\Model;
+use App\Entity\ServiceCategory;
 use App\Entity\Submodel;
 use App\Entity\VideoGallery;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -39,6 +40,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Submodels', 'fas fa-list', Submodel::class);
         yield MenuItem::linkToCrud('Pages', 'fas fa-list', Content::class);
         yield MenuItem::linkToCrud('Video Gallery', 'fas fa-list', VideoGallery::class);
+        yield MenuItem::linkToCrud('Services category', 'fas fa-list', ServiceCategory::class);
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }

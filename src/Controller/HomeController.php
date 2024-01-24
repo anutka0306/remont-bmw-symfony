@@ -6,6 +6,7 @@ use App\Repository\ContentRepository;
 use App\Repository\ModelRepository;
 use App\Repository\SubmodelRepository;
 use App\Repository\VideoGalleryRepository;
+use App\Repository\ServiceCategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,7 +19,8 @@ class HomeController extends AbstractController
         ModelRepository $modelRepository,
         ContentRepository $contentRepository,
         VideoGalleryRepository $videoGalleryRepository,
-        SubmodelRepository $submodelRepository
+        SubmodelRepository $submodelRepository,
+        ServiceCategoryRepository $serviceCategoryRepository
     ): Response
     {
         $finder = new Finder();
@@ -36,7 +38,6 @@ class HomeController extends AbstractController
 
         /* Works */
         $works = $contentRepository->getAllWorks(10);
-        /*$works  = $contentRepository->findBy(['parent_id' => 62, 'published' => 1], ['created_at' => 'DESC'], 10);*/
 
         /* Models - Submodels  */
         $models_array = $modelRepository->findAllWithPath();
@@ -45,7 +46,8 @@ class HomeController extends AbstractController
         }
 
         /* Services */
-        $services = $contentRepository->findBy(['parent_id' => 59, 'published' => 1], ['id' => 'ASC']);
+        $services = $serviceCategoryRepository->findAll();
+        /*$services = $contentRepository->findBy(['parent_id' => 59, 'published' => 1], ['id' => 'ASC']);*/
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',

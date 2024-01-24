@@ -20,29 +20,11 @@
     {% if(works is defined and works is not empty) %}
         {{ include('elements/blocks/works-slider.html.twig') }}
     {% endif %}
-
-    <div class="container-fluid sss">
         {# Models-submodels section #}
         {{ include('elements/blocks/models-section.html.twig') }}
+        {{ include('elements/home/about-service.html.twig') }}
+        {{ include('elements/blocks/advantages.html.twig') }}
 
-        <div class="container">
-            {# Content #}
-            {{ page.text | raw }}
-
-            {#<h2><a href="[[~218]]">Тюнинг БМВ:</a></h2>#}
-            {# Services block #}
-
-            {#[[-!pdoResources?
-            &parents=`394`
-            &depth=`0`
-            &tpl=`catalogtunmod.tpl`
-            &includeTVs=`img1`
-            &showHidden=`0`
-            &limit=`20`
-            &sortdir=`ASC`
-            ]]#}
-        </div>
-    </div>
     {{ include('elements/blocks/services-section.html.twig') }}
 
     {# Contacts #}

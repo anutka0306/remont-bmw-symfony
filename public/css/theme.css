@@ -2494,6 +2494,7 @@ animation: flareAnimation;
     font-style: normal;
     font-weight: 600;
     line-height: 120%; /* 24px */
+    width: 90%;
 }
 .item-cst-4 {
   margin: 16px 0 0;
@@ -2802,6 +2803,7 @@ animation: flareAnimation;
     align-items: center;
     justify-content: space-between;
     border: 2px;
+    margin-bottom: 16px;
 }
 .choose-service__rows {
     width: 100%;

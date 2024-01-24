@@ -27,6 +27,13 @@ class ServiceCategory
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Service::class)]
     private Collection $services;
 
+    #[ORM\OneToOne(inversedBy: 'serviceCategory', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Content $content_id = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $icon = null;
+
     public function __construct()
     {
         $this->services = new ArrayCollection();
@@ -99,6 +106,30 @@ class ServiceCategory
                 $service->setCategory(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getContentId(): ?Content
+    {
+        return $this->content_id;
+    }
+
+    public function setContentId(Content $content_id): static
+    {
+        $this->content_id = $content_id;
+
+        return $this;
+    }
+
+    public function getIcon(): ?string
+    {
+        return $this->icon;
+    }
+
+    public function setIcon(string $icon): static
+    {
+        $this->icon = $icon;
 
         return $this;
     }
