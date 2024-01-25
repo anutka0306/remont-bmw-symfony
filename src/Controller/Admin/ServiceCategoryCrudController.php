@@ -6,6 +6,7 @@ use App\Entity\ServiceCategory;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -31,6 +32,7 @@ class ServiceCategoryCrudController extends AbstractCrudController
         return [
             TextField::new('name', 'Name'),
             AssociationField::new('content_id', 'Page'),
+            NumberField::new('price', 'Price'),
         ];
     }
 }

@@ -34,6 +34,9 @@ class ServiceCategory
     #[ORM\Column(length: 255)]
     private ?string $icon = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $price = null;
+
     public function __construct()
     {
         $this->services = new ArrayCollection();
@@ -130,6 +133,18 @@ class ServiceCategory
     public function setIcon(string $icon): static
     {
         $this->icon = $icon;
+
+        return $this;
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?int $price): static
+    {
+        $this->price = $price;
 
         return $this;
     }
