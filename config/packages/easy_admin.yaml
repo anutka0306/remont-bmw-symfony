@@ -1,0 +1,13 @@
+easy_admin:
+  design:
+    form_theme: # Both themes are needed for ckeditor integration
+      - "@EasyAdmin/form/bootstrap_4.html.twig"
+      - "@FOSCKEditor/Form/ckeditor_widget.html.twig"
+  entities:
+    Content:
+      class: App\Entity\Content
+      label: Content
+      form:
+        fields:
+          - title
+          - { property: 'text', type: 'fos_ckeditor' }

@@ -12,21 +12,34 @@
     <div> Breadcrumbs here </div>
 
     {# Title and page description #}
-    <div>
-        <h1>{{ page.h1 }}</h1>
-        <p>{{ page.metaDescription }}</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+            <h1 class="text-center">{{ page.h1 }}</h1>
+            <p class="text-center">{{ page.metaDescription }}</p>
+            </div>
+        </div>
     </div>
-
     <div>
         <h3>Выберите кузов вашего {{ page.model.name }}</h3>
         <div>
-            <ul>
+            <div class="d-flex submodels__block">
                 {% for submodel in submodels %}
-                <li>
+                <div class="submodels__block_item">
+                    <img src="/images/submodels/{{ submodel.image }}" alt="{{ submodel.name }}">
                     <a href="/{{ submodel.path }}">{{ submodel.name }}</a>
-                </li>
+                </div>
                 {% endfor %}
-            </ul>
+            </div>
+        </div>
+    </div>
+    {{ include('elements/blocks/why-we.html.twig') }}
+    {{ include('elements/blocks/short-about.html.twig') }}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {{ page.text|raw }}
+            </div>
         </div>
     </div>
 
