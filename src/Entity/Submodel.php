@@ -37,9 +37,17 @@ class Submodel
     #[ORM\OneToMany(mappedBy: 'submodel', targetEntity: Content::class)]
     private Collection $contents;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
     public function __construct()
     {
         $this->contents = new ArrayCollection();
+    }
+
+    public function __toString():string
+    {
+        return $this->name;
     }
 
     public function getId(): ?int
@@ -145,6 +153,18 @@ class Submodel
                 $content->setSubmodel(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

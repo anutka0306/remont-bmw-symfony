@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ModelRepository;
+use App\Repository\SubmodelRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,12 +22,16 @@ class PageController extends AbstractController
     public function index(
         string $token,
         ModelRepository $modelRepository,
-        ContentRepository $contentRepository
+        ContentRepository $contentRepository,
+        SubmodelRepository $submodelRepository
     ): Response
     {
         $page = $contentRepository->findPageByPath(trim($token, '/'));
         if($page->getPageType() == 'model') {
             $submodels = $contentRepository->getSubmodelsByModelId($page->getId());
+            foreach ($submodels as $submodel) {
+               $submodel->image = $submodel->getSubmodel()->getImage();
+            }
             return $this->render('model/index.html.twig', [
                 'controller_name' => 'PageController',
                 'models_menu' => $modelRepository->findAllWithPathForMenu(),
