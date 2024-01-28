@@ -1,7 +1,7 @@
 <div class="why-we">
     <div class="container">
         <div class="ww-head-title">
-            <div class="title-white center">Почему нам доверяют владельцы БМВ:</div>
+            <div class="title-white center">Почему нам доверяют владельцы {% if page.model is not null %}{{ page.model.name }}{% else %}БМВ{% endif %}:</div>
             <p class="description-white">
                 Потому что мы уже много лет специализируемся<br />
                 на обслуживание, ремонте и тюнинге только BMW!
