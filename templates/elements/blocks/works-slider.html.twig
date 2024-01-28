@@ -1,7 +1,7 @@
 <div class="check-work">
         <div class="container">
                 <p class="title-5">Ремонт БМВ <span>|</span> Сервис БМВ <span>|</span> Диагностика BMW</p>
-                <p class="description">Наша команда подробно показывает отчеты о ремонте автомобилей BMW:</p>
+                <p class="description">Наша команда подробно показывает отчеты о ремонте автомобилей {% if page.model is not null %}BMW{{ page.model.menuName }}{% else %}BMW{% endif %}:</p>
                 <div class="check-slider__wrapper">
                         <div class="swiper check-slider">
                                 <div class="swiper-wrapper">
@@ -9,11 +9,11 @@
                                                 <div class="swiper-slide">
                                                 <div class="check-item">
                                                         <div class="calendar__wrapper">
-                                                                <img class="calendar" src="images/calendar.svg" alt="" width="18" height="16" />
+                                                                <img class="calendar" src="/images/calendar.svg" alt="" width="18" height="16" />
                                                                 <p class="text-26">{{ work.createdAt }}</p>
                                                         </div>
                                                         <p class="item-top-span">{{ work.name }}</p>
-                                                        <img class="image" src="images/image_3.png" alt="" />
+                                                        <img class="image" src="/images/image_3.png" alt="" />
                                                         <p class="item-description-span">{{ work.metaDescription|slice(0, 100) }}...</p>
                                                         <div class="btn-holder1"><a href="{{ work.path }}">ЧИТАТЬ ПОДРОБНЕЕ</a></div>
                                                 </div>

@@ -1,10 +1,10 @@
 <div class="container-fluid short-autocenter">
     <div class="container">
         <div class="title-3">
-            <p class="text-24">Кратко о ремонте BMW в Автоцентре ПИК</p>
+            <p class="text-24">Кратко о ремонте {% if page.model is not null %}BMW{{ page.model.menuName }}{% else %}BMW{% endif %} в Автоцентре ПИК</p>
             <p class="short-autocenter-text">
-                Команда БМВ с многолетним стажем обслуживания, ремонта и тюнинга автомобилей BMW. <br />
-                Более 10 000 оригинальных и высококачественных аналогов запчастей BMW в наличии на складе.
+                Команда БМВ с многолетним стажем обслуживания, ремонта и тюнинга автомобилей {% if page.model is not null %}BMW{{ page.model.menuName }}{% else %}BMW{% endif %}. <br />
+                Более 10 000 оригинальных и высококачественных аналогов запчастей {% if page.model is not null %}BMW{{ page.model.menuName }}{% else %}BMW{% endif %} в наличии на складе.
             </p>
         </div>
         <div class="short-autocenter__3d-gallery">

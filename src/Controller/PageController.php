@@ -27,8 +27,11 @@ class PageController extends AbstractController
     ): Response
     {
         $page = $contentRepository->findPageByPath(trim($token, '/'));
+
         if($page->getPageType() == 'model') {
             $submodels = $contentRepository->getSubmodelsByModelId($page->getId());
+            /* Works */
+            $works = $contentRepository->getWorksByModel($page->getModel()->getId(), 10);
             foreach ($submodels as $submodel) {
                $submodel->image = $submodel->getSubmodel()->getImage();
             }
@@ -39,6 +42,7 @@ class PageController extends AbstractController
                 'header_nav' => $contentRepository->getHeaderMenu(),
                 'footer_nav' => $contentRepository->getFooterMenu(),
                 'submodels' => $submodels,
+                'works' => $works,
             ]);
         }
 
@@ -48,6 +52,7 @@ class PageController extends AbstractController
             'page' => $contentRepository->findPageByPath(trim($token, '/')),
             'header_nav' => $contentRepository->getHeaderMenu(),
             'footer_nav' => $contentRepository->getFooterMenu(),
+            'works' => $works,
         ]);
     }
 }
