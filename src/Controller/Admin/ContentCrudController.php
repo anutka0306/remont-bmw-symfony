@@ -34,18 +34,14 @@ class ContentCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            AssociationField::new('parent_id'),
             TextField::new('name'),
+            AssociationField::new('parent_id'),
             TextField::new('page_type'),
             TextField::new('path'),
             TextField::new('h1')->hideOnIndex(),
             TextField::new('meta_title')->hideOnIndex(),
             TextEditorField::new('meta_description')->hideOnIndex(),
-            /*CKEditorField::new('text'),
-            TextEditorField::new('text'),*/
-            CodeEditorField::new('text')->hideOnIndex(),
-           /* TextEditorField::new('text')->setFormType(CKEditorType::class)->hideOnIndex(),*/
+            TextEditorField::new('text', 'Text')->setFormType(CKEditorType::class),
             BooleanField::new('published'),
             NumberField::new('sort'),
             DateTimeField::new('created_at')->hideOnIndex(),

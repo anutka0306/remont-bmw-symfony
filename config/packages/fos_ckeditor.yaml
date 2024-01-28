@@ -5,6 +5,5 @@ twig:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
 fos_ck_editor:
     configs:
-        my_config:
+        main_config:
             toolbar: full
-            required: true
