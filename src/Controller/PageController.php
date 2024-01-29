@@ -33,7 +33,9 @@ class PageController extends AbstractController
             /* Works */
             $works = $contentRepository->getWorksByModel($page->getModel()->getId(), 10);
             foreach ($submodels as $submodel) {
-               $submodel->image = $submodel->getSubmodel()->getImage();
+                if(!is_null($submodel->getSubmodel())) {
+                    $submodel->image = $submodel->getSubmodel()->getImage();
+                }
             }
             return $this->render('model/index.html.twig', [
                 'controller_name' => 'PageController',

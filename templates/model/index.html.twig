@@ -29,7 +29,9 @@
                     <div class="submodels__block">
                         {% for submodel in submodels %}
                         <div class="submodels__block_item">
+                            {% if submodel.image is defined %}
                             <img src="/images/submodels/{{ submodel.image }}" alt="{{ submodel.name }}">
+                            {% endif %}
                             <a href="/{{ submodel.path }}">{{ submodel.name }}</a>
                         </div>
                         {% endfor %}
