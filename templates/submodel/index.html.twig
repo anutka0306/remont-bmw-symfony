@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ page.metaTitle }}{% endblock %}
+
+{% block header %}
+    {{ include('elements/menu/header_nav.html.twig') }}
+    {{ include('elements/header/header_top.html.twig') }}
+    {{ include('elements/header/header_video.html.twig') }}
+{% endblock %}
+
+{% block body %}
+    <div> Breadcrumbs here </div>
+
+    {# Title of page #}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 model-page__description">
+                <h1 class="text-center">Ремонт автомобилей {{ page.submodel.modelId.name }} серии {{ page.submodel.name }}</h1>
+            </div>
+        </div>
+    </div>
+
+    {# Services #}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 model-page__services">
+                <h3>Выберите вид ремонта {{ page.submodel.modelId.name }} {{ page.submodel.name }}</h3>
+                <div class="model-page__services_wrapper">
+                {% for service in services %}
+                    <div class="model-page__services_item">
+                        {% if service.image is not null %}
+                        <img src="/images/submodels_services/{{ service.image }}" alt="">
+                        {% endif %}
+                        <a href="/{{ service.path }}">{{ service.shortName ?? service.name }}</a>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ include('elements/blocks/why-we.html.twig') }}
+    {{ include('elements/blocks/short-about.html.twig') }}
+    {% if(works is defined and works is not empty) %}
+        {{ include('elements/blocks/works-slider.html.twig') }}
+    {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 model-page__content">
+                {{ page.text|raw }}
+            </div>
+        </div>
+    </div>
+    {{ include('elements/forms/question-form.html.twig') }}
+
+    {# Contacts #}
+    {{ include('elements/footer/contacts.html.twig') }}
+
+    {# Footer #}
+    {{ include('elements/footer/footer.html.twig') }}
+
+    {#{{ dump(page) }}
+
+    {{ dump(submodels) }}#}
+{% endblock %}

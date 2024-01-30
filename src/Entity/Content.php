@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ContentRepository::class)]
 class Content
 {
+    const SUBMODEL_SERVICES = [2,3,4,5,6,68,75,580,4750];
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -73,6 +74,12 @@ class Content
 
     #[ORM\OneToOne(mappedBy: 'content_id', cascade: ['persist', 'remove'])]
     private ?ServiceCategory $serviceCategory = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    public ?string $image = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $short_name = null;
 
     public function __toString():string
     {
@@ -328,4 +335,29 @@ class Content
 
         return $this;
     }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getShortName(): ?string
+    {
+        return $this->short_name;
+    }
+
+    public function setShortName(?string $short_name): static
+    {
+        $this->short_name = $short_name;
+
+        return $this;
+    }
+
 }

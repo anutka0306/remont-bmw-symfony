@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CodeEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -34,6 +35,7 @@ class ContentCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            IdField::new('id')->onlyOnIndex(),
             TextField::new('name'),
             AssociationField::new('parent_id'),
             TextField::new('page_type'),
@@ -51,8 +53,9 @@ class ContentCrudController extends AbstractCrudController
             AssociationField::new('submodel'),
             BooleanField::new('in_header_nav'),
             BooleanField::new('in_footer_nav'),
-            TextField::new('menu_name')
-
+            TextField::new('menu_name'),
+            ImageField::new('image')->setUploadDir('/public/images/submodels_services/')->setBasePath('/images/submodels_services'),
+            TextField::new('short_name'),
         ];
     }
 

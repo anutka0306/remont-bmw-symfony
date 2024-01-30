@@ -28,6 +28,7 @@ class PageController extends AbstractController
     {
         $page = $contentRepository->findPageByPath(trim($token, '/'));
 
+        /* Pages of type Model */
         if($page->getPageType() == 'model') {
             $submodels = $contentRepository->getSubmodelsByModelId($page->getId());
             /* Works */
@@ -46,15 +47,28 @@ class PageController extends AbstractController
                 'submodels' => $submodels,
                 'works' => $works,
             ]);
+        } elseif ($page->getPageType() == 'submodel') {
+            $works = $contentRepository->getWorksByModel($page->getSubmodel()->getModelId()->getId(), 10);
+            return $this->render('submodel/index.html.twig', [
+                'controller_name' => 'PageController',
+                'services' => $contentRepository->getSubmodelServices(),
+                'models_menu' => $modelRepository->findAllWithPathForMenu(),
+                'page' => $contentRepository->findPageByPath(trim($token, '/')),
+                'header_nav' => $contentRepository->getHeaderMenu(),
+                'footer_nav' => $contentRepository->getFooterMenu(),
+                'works' => $works,
+            ]);
+        } else {
+            $works = $contentRepository->getAllWorks(10);
+            return $this->render('page/index.html.twig', [
+                'controller_name' => 'PageController',
+                'models_menu' => $modelRepository->findAllWithPathForMenu(),
+                'page' => $contentRepository->findPageByPath(trim($token, '/')),
+                'header_nav' => $contentRepository->getHeaderMenu(),
+                'footer_nav' => $contentRepository->getFooterMenu(),
+                'works' => $works,
+            ]);
         }
 
-        return $this->render('page/index.html.twig', [
-            'controller_name' => 'PageController',
-            'models_menu' => $modelRepository->findAllWithPathForMenu(),
-            'page' => $contentRepository->findPageByPath(trim($token, '/')),
-            'header_nav' => $contentRepository->getHeaderMenu(),
-            'footer_nav' => $contentRepository->getFooterMenu(),
-            'works' => $works,
-        ]);
     }
 }
