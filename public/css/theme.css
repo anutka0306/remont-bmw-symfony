@@ -326,6 +326,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;
 }
 .logo {
   float: left;
@@ -490,7 +491,7 @@ body {
 
 .bg-holder-video {
     left: 0;
-    padding: 36px 0 84px;
+    padding: 15px 0 84px;
     width: 100%;
     background: #000000;
 }
@@ -526,6 +527,7 @@ body {
 .header__form{
     padding: 38px 30px 51px 30px;
     border: 1px solid #fff;
+    background: rgba(0,0,0,.7);
 }
 .header__form h3 {
     color: #FFF;
