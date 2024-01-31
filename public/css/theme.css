@@ -5998,6 +5998,26 @@ ul.slick-dots {
     margin-right: 10px;
     margin-left: 10px;
 }
+.model-page__submodels_services {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+.model-page__submodels_services_item {
+    width: 30%;
+}
+.model-page__submodels_services_title h3{
+    color: #222;
+    text-align: center;
+    font-family: "Open Sans";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%; /* 36px */
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
 
 @media only screen and (max-width:768px){
   .quiz_header-title,.quiz_header-page-nubmber {display:none;}

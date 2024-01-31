@@ -49,6 +49,7 @@ class PageController extends AbstractController
             ]);
         } elseif ($page->getPageType() == 'submodel') {
             $works = $contentRepository->getWorksByModel($page->getSubmodel()->getModelId()->getId(), 10);
+            $model_services = $contentRepository->getModelServices($page->getParentId()->getId());
             return $this->render('submodel/index.html.twig', [
                 'controller_name' => 'PageController',
                 'services' => $contentRepository->getSubmodelServices(),
@@ -57,6 +58,7 @@ class PageController extends AbstractController
                 'header_nav' => $contentRepository->getHeaderMenu(),
                 'footer_nav' => $contentRepository->getFooterMenu(),
                 'works' => $works,
+                'model_services' => $model_services,
             ]);
         } else {
             $works = $contentRepository->getAllWorks(10);

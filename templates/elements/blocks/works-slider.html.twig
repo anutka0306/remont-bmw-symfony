@@ -15,7 +15,7 @@
                                                         <p class="item-top-span">{{ work.name }}</p>
                                                         <img class="image" src="/images/image_3.png" alt="" />
                                                         <p class="item-description-span">{{ work.metaDescription|slice(0, 100) }}...</p>
-                                                        <div class="btn-holder1"><a href="{{ work.path }}">ЧИТАТЬ ПОДРОБНЕЕ</a></div>
+                                                        <div class="btn-holder1"><a href="/{{ work.path }}">ЧИТАТЬ ПОДРОБНЕЕ</a></div>
                                                 </div>
                                         </div>
                                         {% endfor %}

@@ -44,6 +44,7 @@
     {% if(works is defined and works is not empty) %}
         {{ include('elements/blocks/works-slider.html.twig') }}
     {% endif %}
+
     <div class="container">
         <div class="row">
             <div class="col-md-12 model-page__content">
@@ -51,6 +52,23 @@
             </div>
         </div>
     </div>
+
+    {% if(model_services is defined and model_services is not empty) %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 model-page__submodels_services_title">
+                    <h3>Услуги {{ page.submodel.modelId.name }}</h3>
+                </div>
+                <div class="col-md-12 model-page__submodels_services">
+                    {% for model_service in model_services %}
+                        <div class="model-page__submodels_services_item">
+                            <a href="/{{ model_service.path }}">{{ model_service.name }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
     {{ include('elements/forms/question-form.html.twig') }}
 
     {# Contacts #}
