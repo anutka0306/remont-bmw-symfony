@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ page.metaTitle }}{% endblock %}
+
+{% block header %}
+    {{ include('elements/menu/header_nav.html.twig') }}
+    {{ include('elements/header/header_top.html.twig') }}
+    {{ include('elements/header/header_video.html.twig') }}
+{% endblock %}
+
+{% block body %}
+    <div> Breadcrumbs here </div>
+
+    {# Title of page #}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 model-page__description">
+                <h1 class="text-center">{{ page.name }}</h1>
+            </div>
+        </div>
+    </div>
+
+
+
+    BLOG ITEM IS HERE
+
+
+    {{ include('elements/forms/question-form.html.twig') }}
+
+    {# Contacts #}
+    {{ include('elements/footer/contacts.html.twig') }}
+
+    {# Footer #}
+    {{ include('elements/footer/footer.html.twig') }}
+
+{% endblock %}

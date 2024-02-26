@@ -18,6 +18,25 @@ class PageController extends AbstractController
         return $this->redirectToRoute('app_home');
     }
 
+    /* Blog page */
+    #[Route('/novosti-bmv')]
+    public function blog(
+        ModelRepository $modelRepository,
+        ContentRepository $contentRepository,
+        SubmodelRepository $submodelRepository
+    ): Response
+    {
+        return $this->render('blog/index.html.twig', [
+            'controller_name' => 'PageController',
+            'models_menu' => $modelRepository->findAllWithPathForMenu(),
+            'page' => $contentRepository->findPageByPath('novosti-bmv'),
+            'header_nav' => $contentRepository->getHeaderMenu(),
+            'footer_nav' => $contentRepository->getFooterMenu(),
+            'blog_items' => $contentRepository->findBy(['page_type' => 'blog']),
+        ]);
+
+    }
+
     #[Route('/{token}', name: 'app_page', requirements: ["token"=> ".+\/$"])]
     public function index(
         string $token,
@@ -60,7 +79,29 @@ class PageController extends AbstractController
                 'works' => $works,
                 'model_services' => $model_services,
             ]);
-        } else {
+        } elseif ($page->getPageType() == 'submodel_service') {
+            $works = $contentRepository->getAllWorks(10);
+            $model_services = $contentRepository->getModelServicesWithoutCurrent($page->getParentId()->getId(), $page->getId());
+            return $this->render('submodel_service/index.html.twig', [
+                'controller_name' => 'PageController',
+                'models_menu' => $modelRepository->findAllWithPathForMenu(),
+                'page' => $contentRepository->findPageByPath(trim($token, '/')),
+                'header_nav' => $contentRepository->getHeaderMenu(),
+                'footer_nav' => $contentRepository->getFooterMenu(),
+                'works' => $works,
+                'model_services' => $model_services,
+                'bmw_services' => $contentRepository->getBmwServices(),
+            ]);
+        } elseif ($page->getPageType() == 'blog') {
+            return $this->render('blog/item.html.twig', [
+                'controller_name' => 'PageController',
+                'models_menu' => $modelRepository->findAllWithPathForMenu(),
+                'page' => $contentRepository->findPageByPath(trim($token, '/')),
+                'header_nav' => $contentRepository->getHeaderMenu(),
+                'footer_nav' => $contentRepository->getFooterMenu(),
+            ]);
+        }
+        else {
             $works = $contentRepository->getAllWorks(10);
             return $this->render('page/index.html.twig', [
                 'controller_name' => 'PageController',

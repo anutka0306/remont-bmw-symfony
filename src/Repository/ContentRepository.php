@@ -103,6 +103,21 @@ class ContentRepository extends ServiceEntityRepository
         return $this->findBy(['parent_id' => $submodels_ids, 'published' => 1], ['created_at' => 'DESC'], 30);
     }
 
+    public function getModelServicesWithoutCurrent($parent_id, $current_id) {
+        return $this->createQueryBuilder('c')
+           ->andWhere('c.parent_id = :parent')
+            ->andWhere('c.id != :id')
+            ->setParameter('parent', $parent_id)
+            ->setParameter('id', $current_id)
+            ->orderBy('c.id', 'ASC')
+            ->setMaxResults(30)
+            ->getQuery()
+            ->getResult();
+    }
+    public function getBmwServices() {
+        return $this->findBy(['parent_id' => 59, 'published' => 1], ['created_at' => 'DESC'], 30);
+    }
+
 //    /**
 //     * @return Content[] Returns an array of Content objects
 //     */

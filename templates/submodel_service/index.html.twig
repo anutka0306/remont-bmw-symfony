@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ page.metaTitle }}{% endblock %}
+
+{% block header %}
+    {{ include('elements/menu/header_nav.html.twig') }}
+    {{ include('elements/header/header_top.html.twig') }}
+    {{ include('elements/header/header_video.html.twig') }}
+{% endblock %}
+
+{% block body %}
+<div> Breadcrumbs here </div>
+    {# Title of page #}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 model-page__description">
+                <h1 class="text-center">{{ page.name }}</h1>
+            </div>
+        </div>
+    </div>
+    {{ include('elements/blocks/why-we.html.twig') }}
+    {{ include('elements/forms/question-form.html.twig') }}
+    {% if(works is defined and works is not empty) %}
+        {{ include('elements/blocks/works-slider.html.twig') }}
+    {% endif %}
+    {# Services #}
+    {% if(model_services is defined and model_services is not empty) %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 model-page__submodels_services_title">
+                    <h3>Услуги:</h3>
+                </div>
+                <div class="col-md-12 model-page__submodels_services">
+                    {% for model_service in model_services %}
+                        <div class="model-page__submodels_services_item">
+                            <a href="/{{ model_service.path }}">{{ model_service.name }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {# Promo Banner #}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 promo-banner1">
+                <img src="/images/banners/promo-banner-1.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    {# Bmw services #}
+    {% if(bmw_services is defined and bmw_services is not empty) %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 model-page__submodels_services_title">
+                    <h3>Услуги BMW:</h3>
+                </div>
+                <div class="col-md-12 model-page__submodels_services">
+                    {% for bmw_service in bmw_services %}
+                        <div class="model-page__submodels_services_item">
+                            <a href="/{{ bmw_service.path }}">{{ bmw_service.name }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    {# Contacts #}
+    {{ include('elements/footer/contacts.html.twig') }}
+
+    {# Footer #}
+    {{ include('elements/footer/footer.html.twig') }}
+{% endblock %}
