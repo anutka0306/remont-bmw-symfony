@@ -49,6 +49,22 @@ class PageController extends AbstractController
         SubmodelRepository $submodelRepository
     ): Response
     {
+        $blog = $blogRepository->findOneBy([
+            'slug' => trim($token, '/'),
+            'published' => 1,
+        ]);
+
+        if($blog) {
+            return $this->render('blog/item.html.twig', [
+                'controller_name' => 'PageController',
+                'models_menu' => $modelRepository->findAllWithPathForMenu(),
+                'page' => $blog,
+                'gallery' => $blog->getGallery(),
+                'header_nav' => $contentRepository->getHeaderMenu(),
+                'footer_nav' => $contentRepository->getFooterMenu(),
+            ]);
+        }
+
         $page = $contentRepository->findPageByPath(trim($token, '/'));
 
         /* Pages of type Model */

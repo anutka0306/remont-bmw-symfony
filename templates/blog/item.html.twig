@@ -22,7 +22,60 @@
 
 
 
-    BLOG ITEM IS HERE
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Левая часть с изображением -->
+            <div class="col-md-6">
+                <div class="card">
+                    <img src="/images/blog-item/{{ page.image }}" class="card-img-top img-fluid" alt="{{ page.name }}">
+                </div>
+            </div>
+
+            <!-- Правая часть с текстом -->
+            <div class="col-md-6">
+                <h1>{{ page.name }}</h1>
+                <ul class="list-unstyled">
+                    <li><strong>Модель:</strong> {{ page.model }}</li>
+                    <li><strong>Двигатель:</strong> {{ page.engine}} </li>
+                    <li><strong>Кузов:</strong> {{ page.carBody }}</li>
+                    <li><strong>Пробег:</strong> {{ page.mileage }}</li>
+                    <li>{{ page.shortDescr|raw }}</li>
+                </ul>
+
+                <!-- Рейтинг -->
+                <div class="my-3">
+                    <span class="text-warning">
+                        &#9733; &#9733; &#9733; &#9733; &#9733;
+                    </span>
+                    <span>{#(Эту статью оценили 526 раз)#}</span>
+                </div>
+
+                <!-- Оглавление -->
+                <h5>Оглавление:</h5>
+                {{ page.tableContent|raw }}
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12">
+                {{ page.content|raw }}
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            {% for image in gallery %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="/images/blog-list/gallery/{{ image }}" class="card-img-top img-fluid" alt="Gallery Image">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 
 
     {{ include('elements/forms/question-form.html.twig') }}
