@@ -14,6 +14,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Brand;
+use App\Entity\Blog;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -35,6 +36,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linktoRoute('Back to the website', 'fas fa-home', 'app_home');
+        yield MenuItem::linkToCrud('Blog posts', 'fas fa-list', Blog::class);
         yield MenuItem::linkToCrud('Brands', 'fas fa-list', Brand::class);
         yield MenuItem::linkToCrud('Models', 'fas fa-list', Model::class);
         yield MenuItem::linkToCrud('Submodels', 'fas fa-list', Submodel::class);

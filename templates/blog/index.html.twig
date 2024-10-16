@@ -20,7 +20,66 @@
         </div>
     </div>
 
+<style>
+	.blog-posts{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		flex-direction: row;
+	}
+	.blog-posts .item{
+		display: block;
+		width: calc(50% - 10px);
+	}
+	.blog-posts .grids{
+		display: flex;
+	}
+	.blog-posts .grids img{
+		width: 100%;
+	}
+	.blog-posts .grids .block{
+		width: 50%;
+		margin: 0px 5px;
+	}
+	.blog-posts .grids h5{
+		margin: 0px 0px 15px 0px;
+		border-bottom: 1px solid #d9d9d9;
+	}
+	.blog-posts .specificatins{
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		margin: 0px 0px 15px 0px;
+		border-bottom: 1px solid #d9d9d9;
+	}
+	.blog-posts .specificatins span{
+		margin: 0px 5px 5px 0px; 
+	}
+</style>
 
+	<div class="container blog-posts" >
+   {% for post in blog_items_posts  %}
+		<div class="item">
+			<a href="/{{ post.slug }}" style="display:block;">
+				<div class="grids">
+					<div class="block">
+						<img src="/images/blog-item/{{ post.image }}" alt="{{ post.name }}">
+					</div>
+					<div class="block">
+						<h5>{{ post.name }}</h5>
+						<div class="specificatins">
+							<span><strong>Модель:</strong>&nbsp;{{ post.model }}</span>
+							<span><strong>Двигатель:</strong>&nbsp;{{ post.engine }}</span>
+							<span><strong>Кузов:</strong>&nbsp;{{ post.carBody }}</span>
+							<span><strong>Пробег:</strong>&nbsp;{{ post.mileage }}</span>
+						</div>
+						<div>{{ post.shortDescr }}</div>
+					</div>
+				</div>
+			</a>
+		</div>
+    {% endfor %}
+	</div>
 
    {% for item in blog_items  %}
        <a href="{{ item.path }}" style="display:block;">{{ item.name }}</a>

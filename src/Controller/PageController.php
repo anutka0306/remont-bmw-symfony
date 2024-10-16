@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\ContentRepository;
+use App\Repository\BlogRepository;
 
 class PageController extends AbstractController
 {
@@ -23,6 +24,7 @@ class PageController extends AbstractController
     public function blog(
         ModelRepository $modelRepository,
         ContentRepository $contentRepository,
+        BlogRepository $blogRepository,
         SubmodelRepository $submodelRepository
     ): Response
     {
@@ -33,6 +35,7 @@ class PageController extends AbstractController
             'header_nav' => $contentRepository->getHeaderMenu(),
             'footer_nav' => $contentRepository->getFooterMenu(),
             'blog_items' => $contentRepository->findBy(['page_type' => 'blog']),
+            'blog_items_posts' => $blogRepository->findBy(['published' => 1]),
         ]);
 
     }
@@ -42,6 +45,7 @@ class PageController extends AbstractController
         string $token,
         ModelRepository $modelRepository,
         ContentRepository $contentRepository,
+        BlogRepository $blogRepository,
         SubmodelRepository $submodelRepository
     ): Response
     {
