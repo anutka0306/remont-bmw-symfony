@@ -17,6 +17,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\DateTimeFilter;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 
 class BlogCrudController extends AbstractCrudController
 {
@@ -37,8 +40,16 @@ class BlogCrudController extends AbstractCrudController
         return [
             IdField::new('id')->onlyOnIndex(),
             BooleanField::new('published'),
-            TextField::new('name', 'Наименование'),
-            ImageField::new('image', 'Превью статьи')->setUploadDir('/public/images/blog-item/')->setBasePath('/images/blog-item'),
+            TextField::new('name', 'Наименование')
+            ->setRequired(true)
+            ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Название не может быть пустым']),
+                ]),
+            ImageField::new('image', 'Превью статьи')->setUploadDir('/public/images/blog-item/')->setBasePath('/images/blog-item')
+                ->setRequired(true)
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Картинка превью не может быть пустой']),
+                ]),
             ImageField::new('gallery')
                 ->setUploadDir('public/images/blog-list/gallery')
                 ->setBasePath('public/images/blog-list/gallery')
@@ -49,19 +60,65 @@ class BlogCrudController extends AbstractCrudController
                 ->setBasePath('public/images/blog-list/content')
                 ->setUploadedFileNamePattern('[year]-[month]-[day]-[contenthash].[extension]')
                 ->setFormTypeOption('multiple', true)->setLabel('Картинки для контента')->hideOnIndex(),
-            TextEditorField::new('short_descr', 'Краткое описание'),
-            TextField::new('slug', 'Ссылка'),
-            TextField::new('meta_title')->hideOnIndex(),
-            TextEditorField::new('meta_descr', 'Meta Description')->hideOnIndex(),
-            TextEditorField::new('meta_keywords')->hideOnIndex(),
-            TextEditorField::new('table_content', 'Оглавление')->hideOnIndex(),
-            TextEditorField::new('content', 'Описание')->setFormType(CKEditorType::class),
-            AssociationField::new('model', 'Модель'),
-            TextField::new('engine', 'Двигатель'),
-            TextField::new('car_body', 'Кузов'),
-            TextField::new('mileage', 'Пробег'),
-            DateTimeField::new('created_at')->hideOnIndex(),
-            DateTimeField::new('updated_at')->hideOnIndex(),
+            TextEditorField::new('short_descr', 'Краткое описание')
+                ->setRequired(true)
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Поле не может быть пустым']),
+                ]),
+            TextField::new('slug', 'Ссылка')
+                ->setRequired(true)
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Поле не может быть пустым']),
+                ]),
+            TextField::new('meta_title')->hideOnIndex()
+                ->setRequired(true)
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Поле не может быть пустым']),
+                ]),
+            TextEditorField::new('meta_descr', 'Meta Description')->hideOnIndex()
+                ->setRequired(true)
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Поле не может быть пустым']),
+                ]),
+            TextEditorField::new('meta_keywords')->hideOnIndex()
+                ->setRequired(true)
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Поле не может быть пустым']),
+                ]),
+            TextEditorField::new('table_content', 'Оглавление')->hideOnIndex()
+                ->setRequired(true)
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Поле не может быть пустым']),
+                ]),
+            TextEditorField::new('content', 'Описание')
+                ->setRequired(true)
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Поле не может быть пустым']),
+                ]),
+            AssociationField::new('model', 'Модель')
+                ->setRequired(true)
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Поле не может быть пустым']),
+                ]),
+            TextField::new('engine', 'Двигатель')
+                ->setRequired(true)
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Поле не может быть пустым']),
+                ]),
+            TextField::new('car_body', 'Кузов')
+                ->setRequired(true)
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Поле не может быть пустым']),
+                ]),
+            TextField::new('mileage', 'Пробег')
+                ->setRequired(true)
+                ->setFormTypeOption('constraints', [
+                    new NotBlank(['message' => 'Поле не может быть пустым']),
+                ]),
+            DateTimeField::new('created_at')->hideOnIndex()
+                ->setFormTypeOption('data', new \DateTimeImmutable()),
+            DateTimeField::new('updated_at')->hideOnIndex()
+                ->setFormTypeOption('data', new \DateTimeImmutable()),
         ];
     }
 

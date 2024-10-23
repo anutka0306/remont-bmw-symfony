@@ -5,6 +5,9 @@ namespace App\Entity;
 use App\Repository\BlogRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping\PrePersist;
+use Doctrine\ORM\Mapping\PreUpdate;
 
 #[ORM\Entity(repositoryClass: BlogRepository::class)]
 class Blog
@@ -29,10 +32,10 @@ class Blog
 
     #[ORM\Column(length: 511, nullable: true)]
     private ?string $slug = null;
-	
+
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private $gallery;
-	
+
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private $content_img;
 
@@ -50,10 +53,10 @@ class Blog
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $content = null;
-	
+
     /*#[ORM\Column(length: 11, nullable: true)]
     private ?int $model_id = null;*/
-	
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $engine = null;
 
@@ -62,7 +65,7 @@ class Blog
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $mileage = null;
-	
+
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $created_at = null;
 
@@ -246,7 +249,7 @@ class Blog
 
         return $this;
     }*/
-	
+
     public function getModel(): ?Model
     {
         return $this->model;
@@ -305,6 +308,24 @@ class Blog
         $this->mileage = $mileage;
 
         return $this;
+    }
+
+    /**
+     * @PrePersist
+     */
+    public function setCreatedAtValue(): void
+    {
+        if ($this->created_at === null) {
+            $this->created_at = new \DateTimeImmutable();  // Используй DateTimeImmutable
+        }
+    }
+
+    /**
+     * @PreUpdate
+     */
+    public function setUpdatedAtValue(): void
+    {
+        $this->updated_at = new \DateTimeImmutable();  // Используй DateTimeImmutable
     }
 
     public function getCreatedAt(): ?\DateTimeImmutable
